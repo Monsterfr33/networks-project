@@ -1,0 +1,22 @@
+.c-btn {
+  padding: 10px 30px;
+  color: #fff;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 7px;
+  // text-transform: uppercase;
+  text-align: center;
+  &.green {
+    background: $greenGradient;
+    box-shadow: 0 5px 12px 0 rgb(68 202 65 / 35%);
+  }
+  &.pink {
+    background: $default;
+    box-shadow: 0 5px 12px 0 rgb(245 40 110 / 35%);
+  }
+  i {
+    margin-right: 7px;
+  }
+}

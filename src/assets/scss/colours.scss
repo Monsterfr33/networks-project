@@ -1,0 +1,33 @@
+$default: linear-gradient(77deg,#f5286e,#fc6d43);
+$greenGradient: linear-gradient(270deg,#76e672 0,#41c83e 100%);
+
+// $darkDefault: #29323c;
+// $lightDefault: #485563;
+// $blue: #4481eb;
+// $green: #8BC34A;
+// $lightBlue: #04befe;
+// $lightGray: #f5f5f5;
+// $darkGray: #333333;
+
+$orange: #f5286e;
+$white: #ffffff;
+$black: #000000;
+$lightBlack: #1e1f22;
+$gray: #78797a;
+$darkGray: #78818b;
+$tripleC: #cccccc;
+
+
+.bg-pink-gradient {
+  background: $default;
+}
+
+.bg-green-gradient {
+  background: $greenGradient;
+}
+
+.text-pinkgradient {
+  background: $default;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
