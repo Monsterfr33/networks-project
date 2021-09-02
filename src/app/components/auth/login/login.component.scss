@@ -1,0 +1,72 @@
+@import '/src/styles.scss';
+
+.login-screen {
+	padding: 5% 0;
+  .heading {
+    h2 {
+      color: $darkDefault;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p {
+      color: $lightDefault;
+      font-size: 15px;
+      padding-top: 5px;
+    }
+  }
+  .signin-inputs {
+    padding-top: 14%;
+    .forgot-checkout {
+      .forgot-btn {
+        float: right;
+        a {
+          color: $darkDefault;
+          font-size: 17px;
+          // font-weight: 600;
+        }
+      }
+    }
+    .forgot-btn {
+      float: right;
+      a {
+        color: $darkDefault;
+        font-size: 17px;
+        // font-weight: 600;
+      }
+    }
+    .login-btn {
+      padding-top: 10px;
+    }
+    .new-account {
+      padding-top: 32px;
+      span {
+        color: $lightDefault;
+        font-size: 15px;
+      }
+      a {
+        font-weight: 600;
+        font-size: 16px;
+        padding-left: 3px;
+      }
+    }
+  }
+}
+
+.form-group {
+  label {
+    &.form-check-label {
+      color: $darkDefault;
+      font-size: 17px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px)
+{
+  .login{
+    .rounded-btn{
+      width: 100%;
+      height: auto;
+    }
+  }
+}

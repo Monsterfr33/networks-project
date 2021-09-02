@@ -1,22 +1,16 @@
-.c-btn {
-  padding: 10px 30px;
-  color: #fff;
-  border: 0;
-  font-size: 16px;
+@mixin rounded-btn-mixin($width: 100%,) {
+  padding: 8px;
+  background: $default;
+  width: $width;
+  height: auto;
   cursor: pointer;
-  font-weight: 500;
-  border-radius: 7px;
-  // text-transform: uppercase;
+  color: $white;
+  border-radius: 50px;
+  display: block;
+  margin: auto;
   text-align: center;
-  &.green {
-    background: $greenGradient;
-    box-shadow: 0 5px 12px 0 rgb(68 202 65 / 35%);
-  }
-  &.pink {
-    background: $default;
-    box-shadow: 0 5px 12px 0 rgb(245 40 110 / 35%);
-  }
-  i {
-    margin-right: 7px;
-  }
+}
+
+.rounded-btn {
+  @include rounded-btn-mixin(100%);
 }
