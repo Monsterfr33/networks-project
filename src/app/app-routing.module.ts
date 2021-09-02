@@ -10,6 +10,18 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'homepage',
+    loadChildren: () => import('./components/homepage/homepage.module').then(m => m.HomepageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./components/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'interest-hobbies',
+    loadChildren: () => import('./components/interest-and-hobbies/interest-and-hobbies.module').then(m => m.InterestAndHobbiesModule)
+  },
 ];
 
 @NgModule({
