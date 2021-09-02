@@ -1,10 +1,10 @@
 <div class="groups">
   <p class="heading">Some Mached Profiles</p>
   <div class="scrollable-section">
-      <div class="item" *ngFor="let group of groups" routerLink="/groups/group-details">
-          <img src="{{group.image}}" [alt]="group.name" />
+      <div class="item" *ngFor="let user of data" (click)="onItemClick()">
+          <img src="{{user.image}}" [alt]="user.name" />
           <div class="fade-away"></div>
-          <p>{{group.name}}</p>
+          <p>{{user.name}}</p>
       </div>
   </div>
 </div>

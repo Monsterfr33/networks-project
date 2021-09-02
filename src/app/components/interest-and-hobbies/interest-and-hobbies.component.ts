@@ -109,10 +109,6 @@ export class InterestAndHobbiesComponent implements OnInit {
       {
         id: 24,
         name: 'Fire Department'
-      },
-      {
-        id: 25,
-        name: 'Funeral Home'
       }
     ]
   }

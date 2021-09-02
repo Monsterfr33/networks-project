@@ -1,10 +1,33 @@
 @import '../../../../styles.scss';
 
 .add-edit-profile {
-  .email-password {
-
-  }
   .professional-about-btn {
     padding-top: 8px;
+  }
+  .small-card{
+    .inner-card{
+      background: $default;
+      text-align: center;
+      border: 1px solid $pink;
+      border-radius: 5px;
+      padding: 10px 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      width: 100%;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h6{
+        font-size: 13px;
+        color: $white;
+      }
+      &.active{
+        background: $greenGradient;
+      }
+    }
+  }
+  .groups-carousel {
+    padding: 0px 0 20px 0;
   }
 }

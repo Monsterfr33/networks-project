@@ -1,6 +1,6 @@
 @mixin rounded-btn-mixin($width: 100%,) {
   padding: 8px;
-  background: $default;
+  background: $greenGradient;
   width: $width;
   height: auto;
   cursor: pointer;

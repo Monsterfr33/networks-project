@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-profile',
@@ -8,14 +9,98 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddEditProfileComponent implements OnInit {
 
+  data: any = [];
+  users: any = [];
   programForm: any = FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.formInit();
+
+    this.data = [
+      {
+        id: 1,
+        name: 'Health Physician'
+      },
+      {
+        id: 2,
+        name: 'Engineer'
+      },
+      {
+        id: 3,
+        name: 'Educational'
+      },
+      {
+        id: 4,
+        name: 'Technician'
+      },
+      {
+        id: 5,
+        name: 'Law'
+      },
+      {
+        id: 6,
+        name: 'Architect'
+      },
+      {
+        id: 7,
+        name: 'Agriculture'
+      },
+      {
+        id: 8,
+        name: 'Construction'
+      },
+      {
+        id: 9,
+        name: 'Manufacturing'
+      },
+      {
+        id: 10,
+        name: 'Computer Science'
+      }
+    ]
+
+    this.users = [
+      {
+        id: 1,
+        image: "https://blog.hootsuite.com/wp-content/uploads/2020/05/how-to-use-facebook-groups.jpg",
+        name: "UWI Students Union"
+      },
+      {
+        id: 2,
+        image: "https://2c6disor5j62kph211fg7v42-wpengine.netdna-ssl.com/wp-content/uploads/2020/12/Bartyed-group-tutoring-800x600-1.jpg",
+        name: "UWI Carnival Commitee"
+      },
+      {
+        id: 3,
+        image: "https://i.pinimg.com/originals/1c/44/e4/1c44e4f394c9594f9bf6452020a64b65.jpg",
+        name: "Gaming Thunders"
+      },
+      {
+        id: 4,
+        image: "https://pubmatic.com/wp-content/uploads/2018/12/BLOG-ASSETS-In-App-Monetization-Partner-750x417.jpg",
+        name: "Development Hard"
+      },
+      {
+        id: 5,
+        image: "https://blog.hootsuite.com/wp-content/uploads/2020/05/how-to-use-facebook-groups.jpg",
+        name: "UWI Students Union"
+      },
+      {
+        id: 6,
+        image: "https://2c6disor5j62kph211fg7v42-wpengine.netdna-ssl.com/wp-content/uploads/2020/12/Bartyed-group-tutoring-800x600-1.jpg",
+        name: "UWI Carnival Commitee"
+      },
+      {
+        id: 7,
+        image: "https://i.pinimg.com/originals/1c/44/e4/1c44e4f394c9594f9bf6452020a64b65.jpg",
+        name: "Gaming Thunders"
+      },
+    ]
   }
 
   formInit() {
@@ -23,6 +108,12 @@ export class AddEditProfileComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  getOnItemClick(event) {
+    if(event == true) {
+      this.router.navigateByUrl('profile/view-profile');
+    }
   }
 
 }

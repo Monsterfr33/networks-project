@@ -1,11 +1,11 @@
 <div class="add-edit-profile">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-6 col-lg-6">
+      <div class="col-12 col-md-8 col-lg-8">
         <div class="image-uploader">
           <app-image-uploader></app-image-uploader>
         </div>
-        <div class="email-password pt-5">
+        <div class="email-password pt-4">
           <form [formGroup]="programForm">
             <div class="form-group">
                 <label>Email</label>
@@ -20,8 +20,17 @@
             <a class="rounded-btn">Professional Title About / Track</a>
           </div>
         </div>
-        <div class="groups-carousel py-5">
-          <app-groups-carousel></app-groups-carousel>
+        <div class="small-card pt-3">
+          <div class="row">
+            <div class="col-6 col-md-4 col-lg-4" *ngFor="let item of data" routerLink="/profile/add-edit-profile">
+              <div class="inner-card">
+                <h6>{{item.name}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="groups-carousel pt-2">
+          <app-groups-carousel [data]="users" (itemClick)="getOnItemClick($event)"></app-groups-carousel>
         </div>
       </div>
     </div>
