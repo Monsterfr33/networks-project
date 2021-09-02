@@ -1,0 +1,9 @@
+<div class="add-img">
+  <form>
+      <input class="d-none" type="file" accept="image/*" #file (change)="readURL($event)">
+      <a (click)="file.click()">
+          <img *ngIf="!imageUploaded" src={{preview}}>
+          <img *ngIf="imageUploaded" src={{loading}}>
+      </a>
+  </form>
+</div>
