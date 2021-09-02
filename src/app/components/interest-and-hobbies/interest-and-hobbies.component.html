@@ -1,31 +1,27 @@
 <div class="interest-hobbies">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-8">
+    <div class="row">
+      <div class="col-12">
         <div class="heading">
-          <h2>Student,</h2>
+          <h2>Student</h2>
           <p>Professional Interest and Hobbies!</p>
         </div>
       </div>
     </div>
 
-    <!-- <div class="row justify-content-center">
-      <div class="col-12 col-md-6 col-lg-6">
-        <div class="serach-bar">
-
+    <div class="row">
+      <div class="col-12">
+        <div class="search-bar">
+          <app-search-bar></app-search-bar>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-8">
-        <div class="small-card">
-          <div class="row">
-            <div class="col-6 col-md-6 col-lg-3" *ngFor="let item of data">
-              <div class="inner-card">
-                <h6>{{item.name}}</h6>
-              </div>
-            </div>
+    <div class="small-card">
+      <div class="row">
+        <div class="col-6 col-md-4 col-lg-2" *ngFor="let item of data">
+          <div class="inner-card">
+            <h6>{{item.name}}</h6>
           </div>
         </div>
       </div>
