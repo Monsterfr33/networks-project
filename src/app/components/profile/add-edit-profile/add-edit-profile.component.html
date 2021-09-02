@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-6 col-lg-6">
-        <app-image-uploader></app-image-uploader>
+        <div class="image-uploader">
+          <app-image-uploader></app-image-uploader>
+        </div>
         <div class="email-password pt-5">
           <form [formGroup]="programForm">
             <div class="form-group">
@@ -17,6 +19,9 @@
           <div class="professional-about-btn">
             <a class="rounded-btn">Professional Title About / Track</a>
           </div>
+        </div>
+        <div class="groups-carousel py-5">
+          <app-groups-carousel></app-groups-carousel>
         </div>
       </div>
     </div>

@@ -1,16 +1,18 @@
-@mixin scroll-menu($width, $padding, $background, $color) {
+@mixin scroll-menu($width, $height, $padding, $margin, $background, $color) {
   background-color: $background;
   overflow: auto;
   white-space: nowrap;
   .item {
-    display: inline-block;
-    color: $color;
-    text-align: center;
-    padding: $padding;
-    width: $width;
-    &.active {
-      border-bottom: 3px solid $color;
-    }
+      display: inline-block;
+      color: $color;
+      text-align: center;
+      padding: $padding;
+      margin: $margin;
+      width: $width;
+      height: $height;
+      &.active {
+          border-bottom: 3px solid $color;
+      }
   }
 }
 

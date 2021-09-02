@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
+import { GroupsCarouselComponent } from './groups-carousel/groups-carousel.component';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     SearchBarComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    GroupsCarouselComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
   exports: [
     LoaderComponent,
     SearchBarComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    GroupsCarouselComponent
   ]
 })
 export class SharedModule { }
