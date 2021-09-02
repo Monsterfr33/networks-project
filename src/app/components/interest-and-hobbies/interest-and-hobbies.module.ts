@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../../shared/shared.module';
-
 import { InterestAndHobbiesRoutingModule } from './interest-and-hobbies-routing.module';
 import { InterestAndHobbiesComponent } from './interest-and-hobbies.component';
 
@@ -11,8 +9,7 @@ import { InterestAndHobbiesComponent } from './interest-and-hobbies.component';
   declarations: [InterestAndHobbiesComponent],
   imports: [
     CommonModule,
-    InterestAndHobbiesRoutingModule,
-    SharedModule
+    InterestAndHobbiesRoutingModule
   ]
 })
 export class InterestAndHobbiesModule { }
