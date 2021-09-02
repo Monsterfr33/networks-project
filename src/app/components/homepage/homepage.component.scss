@@ -1,0 +1,10 @@
+@import '../../../styles.scss';
+
+.homepage-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  .field-btns {
+    text-align: center;
+  }
+}

@@ -1,1 +1,11 @@
-<p>homepage works!</p>
+<div class="homepage-screen">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 col-lg-4 mt-3" *ngFor="let item of fields" routerLink="/interest-hobbies">
+        <div class="field-btns">
+          <a class="rounded-btn">{{item.field}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

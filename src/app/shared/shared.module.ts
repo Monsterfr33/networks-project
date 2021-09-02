@@ -2,13 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-
-
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
 @NgModule({
-  declarations: [LoaderComponent, SearchBarComponent],
+  declarations: [
+    LoaderComponent,
+    SearchBarComponent,
+    ImageUploaderComponent
+  ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    LoaderComponent,
+    SearchBarComponent,
+    ImageUploaderComponent
   ]
 })
 export class SharedModule { }
