@@ -1,0 +1,15 @@
+@import '../../../../styles.scss';
+
+.professional-track-screen {
+	padding: 5% 0;
+  .heading {
+    h2 {
+      color: $darkDefault;
+        font-size: 20px;
+        font-weight: 600;
+    }
+  }
+  .about-inputs {
+    padding-top: 8%;
+  }
+}
