@@ -6,9 +6,9 @@
   }
   .small-card{
     .inner-card{
-      background: $default;
+      background: $greenGradient;
       text-align: center;
-      border: 1px solid $pink;
+      border: 1px solid $greenGradient;
       border-radius: 5px;
       padding: 10px 5px;
       margin-top: 10px;
@@ -23,7 +23,7 @@
         color: $white;
       }
       &.active{
-        background: $greenGradient;
+        background: $default;
       }
     }
   }

@@ -9,7 +9,24 @@
         font-weight: 600;
     }
   }
-  .about-inputs {
+  .input-fields {
     padding-top: 8%;
+    h4 {
+      font-size: 20px;
+      font-weight: 500;
+      color: $darkDefault;
+    }
+    .add-btn {
+      a {
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 500;
+        i {
+          font-size: 15px;
+          padding-right: 6px;
+        }
+      }
+    }
   }
 }
+

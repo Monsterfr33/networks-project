@@ -8,7 +8,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionalAboutComponent implements OnInit {
 
-  programForm: any = FormGroup;
+  aboutProgramForm: any = FormGroup;
+  educationProgramForm: any = FormGroup;
+  experienceProgramForm: any = FormGroup;
+  certificationsProgramForm: any = FormGroup;
 
   constructor(
     private fb: FormBuilder
@@ -19,9 +22,30 @@ export class ProfessionalAboutComponent implements OnInit {
   }
 
   formInit() {
-    this.programForm = this.fb.group({
+    this.aboutProgramForm = this.fb.group({
       professionalTitle: ['', Validators.required],
       aboutUs: ['', Validators.required]
+    });
+
+    this.educationProgramForm = this.fb.group({
+      universityName: ['', Validators.required],
+      degree: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+    });
+
+    this.experienceProgramForm = this.fb.group({
+      designation: ['', Validators.required],
+      companyName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+    });
+
+    this.certificationsProgramForm = this.fb.group({
+      designation: ['', Validators.required],
+      companyName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
     });
   }
 
