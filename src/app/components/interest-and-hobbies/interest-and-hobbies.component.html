@@ -17,8 +17,8 @@
     </div>
     <div class="small-card">
       <div class="row">
-        <div class="col-6 col-md-4 col-lg-2" *ngFor="let item of data">
-          <div class="inner-card">
+        <div class="col-6 col-md-4 col-lg-2" *ngFor="let item of data" (click)="onSelect(item)">
+          <div class="inner-card" [ngClass]="{'active': item.selected}">
             <h6>{{item.name}}</h6>
           </div>
         </div>
@@ -27,7 +27,7 @@
     <div class="next-btn pt-4">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-5">
-          <a class="rounded-btn" routerLink="/profile/add-edit-profile">Next</a>
+          <a class="rounded-btn" (click)="onNext()">Next</a>
         </div>
       </div>
     </div>

@@ -9,60 +9,20 @@ import { Router } from '@angular/router';
 })
 export class AddEditProfileComponent implements OnInit {
 
-  data: any = [];
+  selected: any = [];
   users: any = [];
   programForm: any = FormGroup;
+
 
   constructor(
     private fb: FormBuilder,
     private router: Router
-  ) { }
+  ) {
+    this.selected = this.router.getCurrentNavigation().extras.state;
+  }
 
   ngOnInit(): void {
     this.formInit();
-
-    this.data = [
-      {
-        id: 1,
-        name: 'Health Physician'
-      },
-      {
-        id: 2,
-        name: 'Engineer'
-      },
-      {
-        id: 3,
-        name: 'Educational'
-      },
-      {
-        id: 4,
-        name: 'Technician'
-      },
-      {
-        id: 5,
-        name: 'Law'
-      },
-      {
-        id: 6,
-        name: 'Architect'
-      },
-      {
-        id: 7,
-        name: 'Agriculture'
-      },
-      {
-        id: 8,
-        name: 'Construction'
-      },
-      {
-        id: 9,
-        name: 'Manufacturing'
-      },
-      {
-        id: 10,
-        name: 'Computer Science'
-      }
-    ]
 
     this.users = [
       {
