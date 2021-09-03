@@ -1,0 +1,5 @@
+@import '../../../../../styles.scss';
+
+.rounded-btn {
+  @include rounded-btn-mixin(200px);
+}

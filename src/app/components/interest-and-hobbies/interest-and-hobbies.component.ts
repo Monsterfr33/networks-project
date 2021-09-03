@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interest-and-hobbies',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class InterestAndHobbiesComponent implements OnInit {
 
   data: any = [];
+  selected: any = [];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -111,6 +115,18 @@ export class InterestAndHobbiesComponent implements OnInit {
         name: 'Fire Department'
       }
     ]
+  }
+
+  onSelect(item) {
+    this.selected.push(item);
+
+    this.data.map(i => {
+      if(i.id == item.id) i.selected = true;
+    });
+  }
+
+  onNext() {
+    this.router.navigate(['/profile/add-edit-profile'], {state: this.selected})
   }
 
 }
