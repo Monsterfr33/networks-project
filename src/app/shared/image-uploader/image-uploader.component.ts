@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageUploaderComponent implements OnInit {
 
-  preview: any = "../../../../assets/img/img-upload-icon.png";
-  loading: any = "../../../../assets/img/loading.gif";
+  preview: any = "assets/img/img-upload-icon.png";
+  loading: any = "assets/img/loading.gif";
   imageUploaded: boolean = false;
 
   constructor() { }
