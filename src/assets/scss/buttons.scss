@@ -1,6 +1,6 @@
-@mixin rounded-btn-mixin($width: 100%,) {
+@mixin rounded-btn-mixin($width: 100%, $backgroundC: $default) {
   padding: 8px;
-  background: $default;
+  background: $backgroundC;
   width: $width;
   height: auto;
   cursor: pointer;

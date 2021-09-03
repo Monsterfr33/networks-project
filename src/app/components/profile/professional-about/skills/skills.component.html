@@ -1,0 +1,19 @@
+<div class="skill-form pt-3">
+  <h4>Skills</h4>
+
+  <form [formGroup]="skillsProgramForm">
+    <div class="form-group pt-4">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="Name" formControlName="name">
+    </div>
+    <div class="add-btn text-center my-2">
+      <a class="rounded-btn text-white" (click)="onChangeSkill()">Save</a>
+    </div>
+  </form>
+</div>
+
+<div class="card mt-3" *ngFor="let item of skills">
+  <div class="card-body p-3">
+    <h5>{{item.name}}</h5>
+  </div>
+</div>

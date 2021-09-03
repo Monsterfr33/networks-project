@@ -30,3 +30,6 @@
   }
 }
 
+.rounded-btn {
+  @include rounded-btn-mixin(100%, $greenGradient)
+}

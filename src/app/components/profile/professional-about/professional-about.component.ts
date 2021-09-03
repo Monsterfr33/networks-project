@@ -9,9 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProfessionalAboutComponent implements OnInit {
 
   aboutProgramForm: any = FormGroup;
-  educationProgramForm: any = FormGroup;
-  experienceProgramForm: any = FormGroup;
-  certificationsProgramForm: any = FormGroup;
+  educations: any = [];
+  experiences: any = [];
+  certifications: any = [];
+  skills: any = [];
 
   constructor(
     private fb: FormBuilder
@@ -24,29 +25,30 @@ export class ProfessionalAboutComponent implements OnInit {
   formInit() {
     this.aboutProgramForm = this.fb.group({
       professionalTitle: ['', Validators.required],
-      aboutUs: ['', Validators.required]
+      aboutUs: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
     });
+  }
 
-    this.educationProgramForm = this.fb.group({
-      universityName: ['', Validators.required],
-      degree: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-    });
+  onGetEducations(event) {
+    this.educations = event;
+    console.log(this.educations);
+  }
 
-    this.experienceProgramForm = this.fb.group({
-      designation: ['', Validators.required],
-      companyName: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-    });
+  onGetExperiences(event) {
+    this.experiences = event;
+    console.log(this.experiences);
+  }
 
-    this.certificationsProgramForm = this.fb.group({
-      designation: ['', Validators.required],
-      companyName: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-    });
+  onGetCertifications(event) {
+    this.certifications = event;
+    console.log(this.certifications);
+  }
+
+  onGetSkills(event) {
+    this.skills = event;
+    console.log(this.skills);
   }
 
 }

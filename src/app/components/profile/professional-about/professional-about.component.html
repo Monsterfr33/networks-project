@@ -23,110 +23,39 @@
                 <label>About Us</label>
                 <textarea class="form-control" rows="6" placeholder="About Us ..." formControlName="aboutUs"></textarea>
               </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label>Contact/Phone</label>
+              <input type="number" class="form-control" placeholder="Phone" formControlName="phone">
+          </div>
             </form>
           </div>
 
           <!-- education form -->
-          <div class="education-form pt-3">
-            <h4>Education</h4>
-            <form [formGroup]="educationProgramForm">
-              <app-image-uploader></app-image-uploader>
-              <div class="form-group pt-4">
-                <label>University Name</label>
-                <input type="text" class="form-control" placeholder="University Name" formControlName="universityName">
-              </div>
-              <div class="form-group">
-                <label>Degree</label>
-                <input type="text" class="form-control" placeholder="Degree" formControlName="degree">
-              </div>
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" class="form-control" formControlName="startDate">
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" class="form-control" formControlName="endDate">
-                  </div>
-                </div>
-              </div>
-              <div class="add-btn">
-                <a class="text-pinkgradient"><i class="fas fa-plus text-pinkgradient"></i> Add</a>
-              </div>
-            </form>
+          <div class="border-bottom pb-2">
+            <app-education (getEducations)="onGetEducations($event)"></app-education>
           </div>
 
           <!-- experience form -->
-          <div class="experience-form pt-3">
-            <h4>Experience</h4>
-            <form [formGroup]="experienceProgramForm">
-              <app-image-uploader></app-image-uploader>
-              <div class="form-group pt-4">
-                <label>Designation</label>
-                <input type="text" class="form-control" placeholder="Designation" formControlName="designation">
-              </div>
-              <div class="form-group">
-                <label>Company Name</label>
-                <input type="text" class="form-control" placeholder="Company Name" formControlName="companyName">
-              </div>
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" class="form-control" formControlName="startDate">
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" class="form-control" formControlName="endDate">
-                  </div>
-                </div>
-              </div>
-              <div class="add-btn">
-                <a class="text-pinkgradient"><i class="fas fa-plus text-pinkgradient"></i> Add</a>
-              </div>
-            </form>
+          <div class="border-bottom pb-2">
+            <app-experience (getExperiences)="onGetExperiences($event)"></app-experience>
           </div>
 
           <!-- certifications form -->
-          <div class="certifications-form pt-3">
-            <h4>Certifications</h4>
-            <form [formGroup]="certificationsProgramForm">
-              <app-image-uploader></app-image-uploader>
-              <div class="form-group pt-4">
-                <label>Designation</label>
-                <input type="text" class="form-control" placeholder="Designation" formControlName="designation">
-              </div>
-              <div class="form-group">
-                <label>Company Name</label>
-                <input type="text" class="form-control" placeholder="Company Name" formControlName="companyName">
-              </div>
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" class="form-control" formControlName="startDate">
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                  <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" class="form-control" formControlName="endDate">
-                  </div>
-                </div>
-              </div>
-              <div class="add-btn">
-                <a class="text-pinkgradient"><i class="fas fa-plus text-pinkgradient"></i> Add</a>
-              </div>
-            </form>
+          <div class="border-bottom pb-2">
+            <app-certification (getCertifications)="onGetCertifications($event)"></app-certification>
+          </div>
+
+          <!-- Skills form -->
+          <div class="border-bottom pb-2">
+            <app-skills (getSkills)="onGetSkills($event)"></app-skills>
           </div>
 
           <div class="done-btn pt-4">
-            <a class="rounded-btn">Done</a>
+            <a class="rounded-btn">Update Profile</a>
           </div>
         </div>
       </div>
