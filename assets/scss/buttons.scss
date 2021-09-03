@@ -1,0 +1,16 @@
+@mixin rounded-btn-mixin($width: 100%, $backgroundC: $default) {
+  padding: 8px;
+  background: $backgroundC;
+  width: $width;
+  height: auto;
+  cursor: pointer;
+  color: $white;
+  border-radius: 50px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.rounded-btn {
+  @include rounded-btn-mixin(100%);
+}
