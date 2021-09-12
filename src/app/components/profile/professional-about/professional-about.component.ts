@@ -28,6 +28,8 @@ export class ProfessionalAboutComponent implements OnInit {
       aboutUs: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
+      address: ['', Validators.required],
+      website: ['', Validators.required],
     });
   }
 
