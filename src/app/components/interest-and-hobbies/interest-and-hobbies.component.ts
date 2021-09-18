@@ -25,7 +25,14 @@ export class InterestAndHobbiesComponent implements OnInit {
   }
 
   onSelect(item) {
-    this.selected.push(item);
+    if (this.selected.length > 0) {
+      this.selected.map((i, index) => {
+        if (i._id == item._id) this.selected.splice(index, 1);
+        else this.selected.push(item);
+      });
+    } else {
+      this.selected.push(item);
+    }
   }
 
   onNext() {
