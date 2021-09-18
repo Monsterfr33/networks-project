@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { LoaderService } from '../../core/services/loader/loader.service'
 
 @Component({
   selector: 'app-image-uploader',
@@ -7,24 +11,96 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageUploaderComponent implements OnInit {
 
+  @Input('isReset') isReset: boolean = false;
+  @Input('ifPreviewAvailable') ifPreviewAvailable: any = "";
+
+  @Output() previewImage = new EventEmitter<any>();
+
   preview: any = "assets/img/img-upload-icon.png";
-  loading: any = "assets/img/loading.gif";
+  percent: number = 0;
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
   imageUploaded: boolean = false;
 
-  constructor() { }
+  constructor(
+    private storage: AngularFireStorage,
+    public loader: LoaderService
+  ) { }
 
   ngOnInit(): void {
+    if (this.ifPreviewAvailable && this.ifPreviewAvailable != "0") this.preview = this.ifPreviewAvailable;
   }
 
-  readURL(event: any): void {
+  ngOnChanges() {
+    if (this.isReset) {
+      this.resetPreview();
+    }
+
+    if (this.ifPreviewAvailable && this.ifPreviewAvailable != "0") this.preview = this.ifPreviewAvailable;
+  }
+
+  resetPreview(): void {
+    this.preview = "assets/img/img-upload-icon.png";
+  }
+
+  uploadFile(event) {
+    this.imageUploaded = !this.imageUploaded;
+    this.loader.isLoading.next(true);
+
+    const file = event.target.files[0];
+    const filePath = file.name;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    this.uploadPercent.subscribe(res => this.percent = res );
+
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL = fileRef.getDownloadURL();
+        this.downloadURL.subscribe(res => {
+          this.preview = res;
+          this.imageUploaded = !this.imageUploaded;
+
+          // send status to parent
+          this.previewImage.emit({
+            preview: this.preview,
+            imageUploaded: this.imageUploaded
+          })
+
+          // stop loading
+          this.loader.isLoading.next(false);
+        });
+      })
+    )
+    .subscribe();
+  }
+
+  readURL(event: Event): void {
     if (event.target['files'] && event.target['files'][0]) {
       const file = event.target['files'][0];
-
       const reader = new FileReader();
-      reader.onload = e => this.preview = reader.result;
 
-      reader.readAsDataURL(file);
+      // check image size should be <= 1000KB
+      let imageSizeInKbs = file.size/1024;
+
+      if(imageSizeInKbs <= 1000){
+        // render image preview in image viewer area
+        reader.onload = e => this.preview = reader.result;
+        reader.readAsDataURL(file);
+
+        // store image in DB and get store URL
+        this.uploadFile(event);
+      } else {
+        alert('Image should be less than 1000KB, reduce your image size using https://tinypng.com/');
+      }
     }
+  }
+
+  resetPreviewImage() {
+    this.preview = "assets/img/img-upload-icon.png";
   }
 
 }

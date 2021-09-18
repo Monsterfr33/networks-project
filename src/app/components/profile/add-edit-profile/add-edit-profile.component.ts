@@ -15,6 +15,10 @@ export class AddEditProfileComponent implements OnInit {
   users: any = [];
   programForm: any = FormGroup;
 
+  // image-uploader
+  preview: any = "";
+  imageUploaded: boolean = false;
+  isReset: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -83,11 +87,19 @@ export class AddEditProfileComponent implements OnInit {
   goProfessionalAbout() {
     let data = {
       ...this.programForm.value,
-      image: ''
+      image: this.preview
     };
 
     this.createProfileSrv.setInfo('basic', data);
     this.router.navigateByUrl('/profile/professional-about-profile');
+  }
+
+  onImagePreview(event) {
+    this.preview = event.preview;
+    this.imageUploaded = event.imageUploaded;
+
+    // getting url of saved image from firebase storage bucket
+    console.log(this.preview);
   }
 
 }

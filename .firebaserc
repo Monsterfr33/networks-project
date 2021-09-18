@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "networks-app-dd0fc": {
+      "hosting": {
+        "networks-project": [
+          "networks-app-dd0fc"
+        ]
+      }
+    }
+  }
+}
