@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CreateProfileService } from 'src/app/core/http/services/create-profile/create-profile.service';
 
 @Component({
   selector: 'app-add-edit-profile',
@@ -16,10 +18,10 @@ export class AddEditProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
-  ) {
-    this.selected = this.router.getCurrentNavigation().extras.state;
-  }
+    private router: Router,
+    private http: HttpClient,
+    private createProfileSrv: CreateProfileService
+  ) { }
 
   ngOnInit(): void {
     this.formInit();
@@ -61,6 +63,8 @@ export class AddEditProfileComponent implements OnInit {
         name: "Gaming Thunders"
       },
     ]
+
+    this.selected = this.createProfileSrv.getInfo('interest');
   }
 
   formInit() {
@@ -74,6 +78,16 @@ export class AddEditProfileComponent implements OnInit {
     if(event == true) {
       this.router.navigateByUrl('profile/view-profile');
     }
+  }
+
+  goProfessionalAbout() {
+    let data = {
+      ...this.programForm.value,
+      image: ''
+    };
+
+    this.createProfileSrv.setInfo('basic', data);
+    this.router.navigateByUrl('/profile/professional-about-profile');
   }
 
 }

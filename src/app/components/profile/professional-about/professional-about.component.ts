@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { CreateProfileService } from 'src/app/core/http/services/create-profile/create-profile.service';
 
 @Component({
   selector: 'app-professional-about',
@@ -14,19 +18,27 @@ export class ProfessionalAboutComponent implements OnInit {
   certifications: any = [];
   skills: any = [];
 
+  interestInfo: any = {};
+  basicInfo: any = {};
+
   constructor(
-    private fb: FormBuilder
+    private router: Router,
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private createProfileSrv: CreateProfileService
   ) { }
 
   ngOnInit(): void {
     this.formInit();
+
+    this.interestInfo = this.createProfileSrv.getInfo('interest');
+    this.basicInfo = this.createProfileSrv.getInfo('basic');
   }
 
   formInit() {
     this.aboutProgramForm = this.fb.group({
       professionalTitle: ['', Validators.required],
       aboutUs: ['', Validators.required],
-      email: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
       website: ['', Validators.required],
@@ -35,22 +47,48 @@ export class ProfessionalAboutComponent implements OnInit {
 
   onGetEducations(event) {
     this.educations = event;
-    console.log(this.educations);
   }
 
   onGetExperiences(event) {
     this.experiences = event;
-    console.log(this.experiences);
   }
 
   onGetCertifications(event) {
     this.certifications = event;
-    console.log(this.certifications);
   }
 
   onGetSkills(event) {
     this.skills = event;
-    console.log(this.skills);
+  }
+
+  updateProfile() {
+    let data = {
+      ...this.interestInfo,
+      ...this.basicInfo,
+      ...this.aboutProgramForm.value,
+      educations: this.educations,
+      experiences: this.experiences,
+      certifications: this.certifications,
+      skills: this.skills
+    };
+
+    // storing data to --> data holding service (for all steps)
+    this.createProfileSrv.setInfo('all', data);
+
+    // http api call - POST
+    if (this.aboutProgramForm.valid) {
+      this.http.post(environment.API_BASE_URL + '/api/v1/professional-about', data).subscribe(res => {
+        alert('Profile Successfully Created.')
+        this.router.navigateByUrl('/homepage');
+      },
+      (error) => {
+        alert(error);
+      })
+    } else {
+      alert('Form is empty!');
+    }
+
+    console.log(data);
   }
 
 }

@@ -24,10 +24,6 @@
                 <textarea class="form-control" rows="6" placeholder="About Us ..." formControlName="aboutUs"></textarea>
               </div>
               <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" placeholder="Email" formControlName="email">
-              </div>
-              <div class="form-group">
                 <label>Contact/Phone</label>
                 <input type="number" class="form-control" placeholder="Phone" formControlName="phone">
               </div>
@@ -63,7 +59,7 @@
           </div>
 
           <div class="done-btn pt-4">
-            <a class="rounded-btn">Update Profile</a>
+            <a class="rounded-btn" (click)="updateProfile()">Update Profile</a>
           </div>
         </div>
       </div>

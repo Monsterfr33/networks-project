@@ -17,14 +17,14 @@
             </div>
           </form>
           <div class="professional-about-btn">
-            <a class="rounded-btn" routerLink="/profile/professional-about-profile">Professional Title About / Track</a>
+            <a class="rounded-btn" (click)="goProfessionalAbout()">Professional Title About / Track</a>
           </div>
         </div>
-        <div class="small-card pt-3">
+        <div class="small-card pt-3" *ngIf="selected.length > 0">
           <div class="row">
             <div class="col-6 col-md-4 col-lg-4" *ngFor="let item of selected" routerLink="/profile/add-edit-profile">
               <div class="inner-card">
-                <h6>{{item.name}}</h6>
+                <h6>{{item.text}}</h6>
               </div>
             </div>
           </div>

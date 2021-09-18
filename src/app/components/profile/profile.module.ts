@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../../shared/shared.module';
 
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -22,6 +23,7 @@ import { SkillsComponent } from './professional-about/skills/skills.component';
     ProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     SharedModule
   ]
 })

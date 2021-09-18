@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { CreateProfileService } from 'src/app/core/http/services/create-profile/create-profile.service';
 
 @Component({
   selector: 'app-interest-and-hobbies',
@@ -12,121 +15,30 @@ export class InterestAndHobbiesComponent implements OnInit {
   selected: any = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
+    private createProfileSrv: CreateProfileService
   ) { }
 
   ngOnInit(): void {
-
-    this.data = [
-      {
-        id: 1,
-        name: 'Health Physician'
-      },
-      {
-        id: 2,
-        name: 'Engineer'
-      },
-      {
-        id: 3,
-        name: 'Educational'
-      },
-      {
-        id: 4,
-        name: 'Technician'
-      },
-      {
-        id: 5,
-        name: 'Law'
-      },
-      {
-        id: 6,
-        name: 'Architect'
-      },
-      {
-        id: 7,
-        name: 'Agriculture'
-      },
-      {
-        id: 8,
-        name: 'Construction'
-      },
-      {
-        id: 9,
-        name: 'Manufacturing'
-      },
-      {
-        id: 10,
-        name: 'Computer Science'
-      },
-      {
-        id: 11,
-        name: 'Wholesale Trade'
-      },
-      {
-        id: 12,
-        name: 'Finance'
-      },
-      {
-        id: 13,
-        name: 'Social Services'
-      },
-      {
-        id: 14,
-        name: 'Arts and Entertainment'
-      },
-      {
-        id: 15,
-        name: 'Accomadations'
-      },
-      {
-        id: 16,
-        name: 'Food Services'
-      },
-      {
-        id: 17,
-        name: 'Automotive'
-      },
-      {
-        id: 18,
-        name: 'Legislators'
-      },
-      {
-        id: 19,
-        name: 'Transportation'
-      },
-      {
-        id: 20,
-        name: 'Government'
-      },
-      {
-        id: 21,
-        name: 'Real Estate'
-      },
-      {
-        id: 22,
-        name: 'Security'
-      },
-      {
-        id: 23,
-        name: 'Publisher'
-      },
-      {
-        id: 24,
-        name: 'Fire Department'
-      }
-    ]
+    this.getData();
   }
 
   onSelect(item) {
     this.selected.push(item);
-
-    this.data.map(i => {
-      if(i.id == item.id) i.selected = true;
-    });
   }
 
   onNext() {
-    this.router.navigate(['/profile/add-edit-profile'], {state: this.selected})
+    this.router.navigate(['/profile/add-edit-profile']);
+    this.createProfileSrv.setInfo('interest', this.selected)
+  }
+
+  getData() {
+    this.http.get(environment.API_BASE_URL + '/api/v1/interest-hobbies').subscribe(res => {
+      this.data = res
+
+      console.log(this.data);
+    })
   }
 
 }

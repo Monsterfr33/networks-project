@@ -23,6 +23,7 @@ export class CertificationComponent implements OnInit {
 
   formInit() {
     this.certificationsProgramForm = this.fb.group({
+      image: '',
       certification: ['', Validators.required],
       companyName: ['', Validators.required],
       startDate: ['', Validators.required],

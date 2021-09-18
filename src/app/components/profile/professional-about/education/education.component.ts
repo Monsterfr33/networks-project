@@ -23,6 +23,7 @@ export class EducationComponent implements OnInit {
 
   formInit(): void {
     this.educationProgramForm = this.fb.group({
+      image: '',
       universityName: ['', Validators.required],
       degree: ['', Validators.required],
       startDate: ['', Validators.required],

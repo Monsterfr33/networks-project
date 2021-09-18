@@ -23,6 +23,7 @@ export class ExperienceComponent implements OnInit {
 
   formInit(): void {
     this.experienceProgramForm = this.fb.group({
+      image: '',
       designation: ['', Validators.required],
       companyName: ['', Validators.required],
       startDate: ['', Validators.required],
