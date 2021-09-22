@@ -15,8 +15,8 @@ export class GroupsCarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onItemClick() {
-    this.itemClick.emit(true);
+  onItemClick(item) {
+    this.itemClick.emit(item);
   }
 
 }

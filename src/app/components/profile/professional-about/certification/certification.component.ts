@@ -13,6 +13,11 @@ export class CertificationComponent implements OnInit {
   certificationsProgramForm: any = FormGroup;
   certifications: any = [];
 
+  // image-uploader
+  certificationPreview: any = "";
+  imageCertificationUploaded: boolean = false;
+  isCertificationReset: boolean = false;
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -23,7 +28,7 @@ export class CertificationComponent implements OnInit {
 
   formInit() {
     this.certificationsProgramForm = this.fb.group({
-      image: '',
+      image: [''],
       certification: ['', Validators.required],
       companyName: ['', Validators.required],
       startDate: ['', Validators.required],
@@ -41,6 +46,18 @@ export class CertificationComponent implements OnInit {
     } else {
       alert('Certifications field is empty!');
     }
+  }
+
+  onImageCertificationPreview(event) {
+    this.certificationPreview = event.preview;
+    this.imageCertificationUploaded = event.imageUploaded;
+
+    // getting url of saved image from firebase storage bucket
+    console.log(this.certificationPreview);
+
+    this.certificationsProgramForm.patchValue({
+      image: this.certificationPreview
+    })
   }
 
 }

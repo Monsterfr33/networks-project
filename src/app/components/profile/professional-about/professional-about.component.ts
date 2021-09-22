@@ -63,9 +63,9 @@ export class ProfessionalAboutComponent implements OnInit {
 
   updateProfile() {
     let data = {
-      ...this.interestInfo,
       ...this.basicInfo,
       ...this.aboutProgramForm.value,
+      interestHobbies: this.interestInfo,
       educations: this.educations,
       experiences: this.experiences,
       certifications: this.certifications,
@@ -77,7 +77,7 @@ export class ProfessionalAboutComponent implements OnInit {
 
     // http api call - POST
     if (this.aboutProgramForm.valid) {
-      this.http.post(environment.API_BASE_URL + '/api/v1/professional-about', data).subscribe(res => {
+      this.http.post(environment.API_BASE_URL + '/professional-about', data).subscribe(res => {
         alert('Profile Successfully Created.')
         this.router.navigateByUrl('/homepage');
       },

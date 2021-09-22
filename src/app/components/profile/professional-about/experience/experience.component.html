@@ -1,7 +1,7 @@
 <div class="experience-form pt-3">
   <h4>Experience</h4>
   <form [formGroup]="experienceProgramForm">
-    <app-image-uploader></app-image-uploader>
+    <app-image-uploader [isReset]="isExperienceReset" (previewImage)="onImageExperiencePreview($event)"></app-image-uploader>
     <div class="form-group pt-4">
       <label>Designation</label>
       <input type="text" class="form-control" placeholder="Designation" formControlName="designation">

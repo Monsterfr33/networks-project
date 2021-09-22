@@ -1,7 +1,7 @@
 <div class="certifications-form pt-3">
   <h4>Certifications</h4>
   <form [formGroup]="certificationsProgramForm">
-    <app-image-uploader></app-image-uploader>
+    <app-image-uploader [isReset]="isCertificationReset" (previewImage)="onImageCertificationPreview($event)"></app-image-uploader>
     <div class="form-group pt-4">
       <label>Certification</label>
       <input type="text" class="form-control" placeholder="Certification" formControlName="certification">

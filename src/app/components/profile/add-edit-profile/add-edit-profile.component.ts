@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { CreateProfileService } from 'src/app/core/http/services/create-profile/create-profile.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CreateProfileService } from 'src/app/core/http/services/create-profile/
   styleUrls: ['./add-edit-profile.component.scss']
 })
 export class AddEditProfileComponent implements OnInit {
-
+  
   selected: any = [];
   users: any = [];
   programForm: any = FormGroup;
@@ -29,59 +30,21 @@ export class AddEditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInit();
-
-    this.users = [
-      {
-        id: 1,
-        image: "https://blog.hootsuite.com/wp-content/uploads/2020/05/how-to-use-facebook-groups.jpg",
-        name: "UWI Students Union"
-      },
-      {
-        id: 2,
-        image: "https://2c6disor5j62kph211fg7v42-wpengine.netdna-ssl.com/wp-content/uploads/2020/12/Bartyed-group-tutoring-800x600-1.jpg",
-        name: "UWI Carnival Commitee"
-      },
-      {
-        id: 3,
-        image: "https://i.pinimg.com/originals/1c/44/e4/1c44e4f394c9594f9bf6452020a64b65.jpg",
-        name: "Gaming Thunders"
-      },
-      {
-        id: 4,
-        image: "https://pubmatic.com/wp-content/uploads/2018/12/BLOG-ASSETS-In-App-Monetization-Partner-750x417.jpg",
-        name: "Development Hard"
-      },
-      {
-        id: 5,
-        image: "https://blog.hootsuite.com/wp-content/uploads/2020/05/how-to-use-facebook-groups.jpg",
-        name: "UWI Students Union"
-      },
-      {
-        id: 6,
-        image: "https://2c6disor5j62kph211fg7v42-wpengine.netdna-ssl.com/wp-content/uploads/2020/12/Bartyed-group-tutoring-800x600-1.jpg",
-        name: "UWI Carnival Commitee"
-      },
-      {
-        id: 7,
-        image: "https://i.pinimg.com/originals/1c/44/e4/1c44e4f394c9594f9bf6452020a64b65.jpg",
-        name: "Gaming Thunders"
-      },
-    ]
+    this.getProfile();
 
     this.selected = this.createProfileSrv.getInfo('interest');
   }
 
   formInit() {
     this.programForm = this.fb.group({
+      name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   getOnItemClick(event) {
-    if(event == true) {
-      this.router.navigateByUrl('profile/view-profile');
-    }
+    this.router.navigateByUrl('profile/view-profile', {state: {profile: event}});
   }
 
   goProfessionalAbout() {
@@ -100,6 +63,14 @@ export class AddEditProfileComponent implements OnInit {
 
     // getting url of saved image from firebase storage bucket
     console.log(this.preview);
+  }
+
+  getProfile() {
+    this.http.get(environment.API_BASE_URL + '/professional-about').subscribe(res => {
+      this.users = res
+
+      console.log(this.users);
+    })
   }
 
 }

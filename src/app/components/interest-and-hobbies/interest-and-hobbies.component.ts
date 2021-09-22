@@ -41,7 +41,7 @@ export class InterestAndHobbiesComponent implements OnInit {
   }
 
   getData() {
-    this.http.get(environment.API_BASE_URL + '/api/v1/interest-hobbies').subscribe(res => {
+    this.http.get(environment.API_BASE_URL + '/interest-hobbies').subscribe(res => {
       this.data = res
 
       console.log(this.data);

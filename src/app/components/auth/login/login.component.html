@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-md-6 col-lg-6">
         <div class="signin-inputs">
-          <form [formGroup]="programForm">
+          <form [formGroup]="loginProgramForm">
               <div class="form-group">
                   <label>Email</label>
                   <input type="email" class="form-control" placeholder="Email" formControlName="email">
@@ -41,13 +41,13 @@
               </div>
 
               <div class="login-btn">
-                <a class="rounded-btn">Sign In</a>
+                <a class="rounded-btn" (click)="login()">Sign In</a>
               </div>
           </form>
 
           <div class="new-account text-center">
             <span>Don't have an Account?</span>
-            <a class="text-pinkgradient" routerLink="/auth/signup">
+            <a class="text-pinkgradient" routerLink="/interest-hobbies">
               Sign Up Now
             </a>
           </div>

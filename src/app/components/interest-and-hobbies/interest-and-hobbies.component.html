@@ -18,7 +18,7 @@
     <div class="small-card">
       <div class="row">
         <div class="col-6 col-md-4 col-lg-2"
-          *ngFor="let item of data.interestHobbies"
+          *ngFor="let item of data"
           (click)="onSelect(item)"
         >
           <div class="inner-card" [ngClass]="{'active': selected.includes(item)}">

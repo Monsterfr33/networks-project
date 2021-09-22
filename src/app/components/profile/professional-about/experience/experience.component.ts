@@ -13,6 +13,11 @@ export class ExperienceComponent implements OnInit {
   experienceProgramForm: any = FormGroup;
   experiences: any = [];
 
+  // image-uploader
+  experiencePreview: any = "";
+  imageExperienceUploaded: boolean = false;
+  isExperienceReset: boolean = false;
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -23,7 +28,7 @@ export class ExperienceComponent implements OnInit {
 
   formInit(): void {
     this.experienceProgramForm = this.fb.group({
-      image: '',
+      image: [''],
       designation: ['', Validators.required],
       companyName: ['', Validators.required],
       startDate: ['', Validators.required],
@@ -41,6 +46,18 @@ export class ExperienceComponent implements OnInit {
     } else {
       alert('Experiences field is empty!');
     }
+  }
+
+  onImageExperiencePreview(event) {
+    this.experiencePreview = event.preview;
+    this.imageExperienceUploaded = event.imageUploaded;
+
+    // getting url of saved image from firebase storage bucket
+    console.log(this.experiencePreview);
+
+    this.experienceProgramForm.patchValue({
+      image: this.experiencePreview
+    })
   }
 
 }

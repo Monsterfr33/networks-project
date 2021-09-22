@@ -13,6 +13,11 @@ export class EducationComponent implements OnInit {
   educationProgramForm: any = FormGroup;
   educations: any = [];
 
+  // image-uploader
+  educationPreview: any = "";
+  imageEducationUploaded: boolean = false;
+  isEducationReset: boolean = false;
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -23,7 +28,7 @@ export class EducationComponent implements OnInit {
 
   formInit(): void {
     this.educationProgramForm = this.fb.group({
-      image: '',
+      image: [''],
       universityName: ['', Validators.required],
       degree: ['', Validators.required],
       startDate: ['', Validators.required],
@@ -41,6 +46,18 @@ export class EducationComponent implements OnInit {
     } else {
       alert('Education field is empty!');
     }
+  }
+
+  onImageEducationPreview(event) {
+    this.educationPreview = event.preview;
+    this.imageEducationUploaded = event.imageUploaded;
+
+    // getting url of saved image from firebase storage bucket
+    console.log(this.educationPreview);
+
+    this.educationProgramForm.patchValue({
+      image: this.educationPreview
+    })
   }
 
 }

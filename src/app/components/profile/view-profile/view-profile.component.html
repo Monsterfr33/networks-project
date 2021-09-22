@@ -1,13 +1,11 @@
-<div class="view">
+<div class="view" *ngIf="data">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12">
         <div class="heading">
-          <h2>Professional Title,</h2>
-          <p>Text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.
-          </p>
+          <h1>{{data.name}}</h1>
+          <h2 class="pt-5">Professional Title,</h2>
+          <p>{{data.professionalTitle}}</p>
         </div>
       </div>
     </div>
@@ -17,12 +15,12 @@
         <div class="col-12">
           <h2>Education</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of educations">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.educations">
           <div class="card">
             <img src={{item.image}}>
-            <p>{{item.university}}</p>
+            <p>{{item.universityName}}</p>
             <h6>{{item.degree}}</h6>
-            <p>{{item.date}}</p>
+            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
           </div>
         </div>
       </div>
@@ -31,12 +29,12 @@
         <div class="col-12">
           <h2>Experience</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of experiences">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.experiences">
           <div class="card">
             <img src={{item.image}}>
-            <p>{{item.stack}}</p>
-            <h6>{{item.office}}</h6>
-            <p>{{item.date}}</p>
+            <p>{{item.designation}}</p>
+            <h6>{{item.companyName}}</h6>
+            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
           </div>
         </div>
       </div>
@@ -45,12 +43,12 @@
         <div class="col-12">
           <h2>Licenses & Certifications</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of certifications">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.certifications">
           <div class="card">
             <img src={{item.image}}>
-            <p>{{item.name}}</p>
-            <h6>{{item.company}}</h6>
-            <p>{{item.date}}</p>
+            <p>{{item.certification}}</p>
+            <h6>{{item.companyName}}</h6>
+            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
           </div>
         </div>
       </div>
@@ -59,12 +57,12 @@
         <div class="col-12">
           <h2>Volunteering & Skills</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of projects">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.skills">
           <div class="card">
-            <img src={{item.image}}>
-            <p>{{item.name}}</p>
-            <h6>{{item.company}}</h6>
-            <p>{{item.stack}}</p>
+            <!-- <img src={{item.image}}> -->
+            <!-- <p>{{item.name}}</p> -->
+            <h6>{{item.name}}</h6>
+            <!-- <p>{{item.startDate}} - {{item.endDate}}</p> -->
           </div>
         </div>
       </div>
@@ -73,10 +71,10 @@
         <div class="col-12">
           <h2>Contact</h2>
           <div class="contact">
-            <p class="pt-3"><i class="fas fa-globe"></i> www.websitedummy.com</p>
-            <p><i class="fas fa-envelope"></i> Sample123@gmail.com</p>
-            <p><i class="fas fa-phone-alt"></i> +92 33021888660</p>
-            <p><i class="fas fa-map-marker-alt"></i> House No. B-15 Street 3 Karachi,Pakistan</p>
+            <p class="pt-3"><i class="fas fa-globe"></i> {{data.website}}</p>
+            <p><i class="fas fa-envelope"></i> {{data.email}}</p>
+            <p><i class="fas fa-phone-alt"></i> {{data.phone}}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{data.address}}</p>
           </div>
         </div>
       </div>
