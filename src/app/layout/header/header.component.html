@@ -1,1 +1,13 @@
-<p>header works!</p>
+<header *ngIf="user?._id">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-12">
+                <h4 class="mb-0">{{user.name}}</h4>
+            </div>
+            <div class="col-md-6 col-12">
+                <a class="rounded-btn w-25 float-right" (click)="logout()">Logout</a>
+                <img class="float-right mr-3" src="{{user.image}}" alt="">
+            </div>
+        </div>
+    </div>
+</header>

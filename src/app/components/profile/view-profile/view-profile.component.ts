@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ConfigService } from 'src/app/core/http/config/config.service';
+import { AuthService } from 'src/app/core/http/services/auth/auth.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -13,6 +14,7 @@ export class ViewProfileComponent implements OnInit {
 
   data: any = {};
   email: string = "";
+  user: any = {};
 
   educations: any = [];
   experiences: any = [];
@@ -22,7 +24,8 @@ export class ViewProfileComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private config: ConfigService
+    private config: ConfigService,
+    private authService: AuthService
   ) {
     this.data = this.router.getCurrentNavigation().extras.state?.profile;
     this.email = this.router.getCurrentNavigation().extras.state?.email;
@@ -30,10 +33,19 @@ export class ViewProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.email) this.getProfile();
+
+    if (this.authService.isUserLoggedIn()) {
+      this.user = this.authService.getUser();
+      this.email = this.user.email;
+
+      this.getProfile();
+    } else {
+      this.router.navigateByUrl('/auth/login');
+    }
   }
 
   edit(data) {
-    this.router.navigate(['/profile/professional-about-profile'], { state: { data: this.data} })
+    this.router.navigate(['/profile/professional-about-profile'], { state: { data: this.data, isEditMode: true} })
   }
 
   getProfile() {
@@ -45,6 +57,7 @@ export class ViewProfileComponent implements OnInit {
       {params: params, headers: this.config.getHeaders()}
     ).subscribe(res => {
       this.data = res[0];
+      this.authService.setUser(this.data);
     })
   }
 

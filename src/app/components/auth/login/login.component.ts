@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/core/http/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   loginProgramForm: any = FormGroup;
+  user: any = {};
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +24,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInit();
+
+    if (this.authService.isUserLoggedIn()) {
+      this.user = this.authService.getUser();
+
+      this.router.navigate(['/profile/view-profile'], {state: {email: this.user.email}});
+    }
+    else {
+      this.router.navigateByUrl('/auth/login');
+    }
   }
 
   formInit() {

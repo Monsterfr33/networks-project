@@ -18,6 +18,7 @@ export class ProfessionalAboutComponent implements OnInit {
   certifications: any = [];
   skills: any = [];
   data: any = [];
+  isEditMode: boolean = false;
 
   interestInfo: any = {};
   basicInfo: any = {};
@@ -28,7 +29,8 @@ export class ProfessionalAboutComponent implements OnInit {
     private http: HttpClient,
     private createProfileSrv: CreateProfileService
   ) {
-    this.data = this.router.getCurrentNavigation().extras.state.data;
+    this.data = this.router.getCurrentNavigation().extras?.state?.data;
+    this.isEditMode = this.router.getCurrentNavigation().extras?.state?.isEditMode;
    }
 
   ngOnInit(): void {
@@ -71,7 +73,7 @@ export class ProfessionalAboutComponent implements OnInit {
     this.skills = event;
   }
 
-  updateProfile() {
+  createProfile() {
     let data = {
       ...this.basicInfo,
       ...this.aboutProgramForm.value,
@@ -89,6 +91,32 @@ export class ProfessionalAboutComponent implements OnInit {
     if (this.aboutProgramForm.valid) {
       this.http.post(environment.API_BASE_URL + '/professional-about', data).subscribe(res => {
         this.router.navigateByUrl('/auth/login');
+      })
+    } else {
+      alert('Form is empty!');
+    }
+
+    console.log(data);
+  }
+
+  updateProfile() {
+    let data = {
+      ...this.basicInfo,
+      ...this.aboutProgramForm.value,
+      interestHobbies: this.interestInfo,
+      educations: this.educations,
+      experiences: this.experiences,
+      certifications: this.certifications,
+      skills: this.skills
+    };
+
+    // storing data to --> data holding service (for all steps)
+    this.createProfileSrv.setInfo('all', data);
+
+    // http api call - POST
+    if (this.aboutProgramForm.valid) {
+      this.http.put(environment.API_BASE_URL + '/professional-about', this.data._id, data).subscribe(res => {
+        this.router.navigate(['/profile/view-profile'], {state: {email: this.data.email}});
       })
     } else {
       alert('Form is empty!');

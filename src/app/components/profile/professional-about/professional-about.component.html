@@ -59,7 +59,8 @@
           </div>
 
           <div class="done-btn pt-4">
-            <a class="rounded-btn" (click)="updateProfile()">Update Profile</a>
+            <a class="rounded-btn" (click)="createProfile()" *ngIf="!isEditMode">Create Profile</a>
+            <a class="rounded-btn" (click)="updateProfile()" *ngIf="isEditMode">Update Profile</a>
           </div>
         </div>
       </div>
