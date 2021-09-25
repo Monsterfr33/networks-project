@@ -29,7 +29,11 @@ export class ViewProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProfile();
+    if(this.email) this.getProfile();
+  }
+
+  edit(data) {
+    this.router.navigate(['/profile/professional-about-profile'], { state: { data: this.data} })
   }
 
   getProfile() {
@@ -40,7 +44,7 @@ export class ViewProfileComponent implements OnInit {
       environment.API_BASE_URL + '/professional-about', 
       {params: params, headers: this.config.getHeaders()}
     ).subscribe(res => {
-      console.log(res);
+      this.data = res[0];
     })
   }
 

@@ -3,6 +3,15 @@
 .view{
   padding: 5% 0;
   .heading {
+    a {
+      cursor: pointer;
+      font-size: 18px;
+      color: white;
+      font-weight: 500;
+      background: $default;
+      border-radius: 20px;
+      padding: 6px 18px;
+    }
     h2 {
       color: $darkDefault;
       font-size: 20px;

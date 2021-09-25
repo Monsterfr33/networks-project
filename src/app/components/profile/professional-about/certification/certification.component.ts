@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CertificationComponent implements OnInit {
 
+  @Input('data') data: any = [];
   @Output() getCertifications = new EventEmitter<any>();
 
   certificationsProgramForm: any = FormGroup;
@@ -24,6 +25,8 @@ export class CertificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInit();
+
+    this.certifications = this.data;
   }
 
   formInit() {

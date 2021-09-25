@@ -34,6 +34,6 @@
   <div class="card-body p-3">
     <h5>{{item.universityName}}</h5>
     <p>{{item.degree}}</p>
-    <p>{{item.startDate}} - {{item.endDate}}</p>
+    <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
   </div>
 </div>

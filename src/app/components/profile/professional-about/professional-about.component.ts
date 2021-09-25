@@ -17,6 +17,7 @@ export class ProfessionalAboutComponent implements OnInit {
   experiences: any = [];
   certifications: any = [];
   skills: any = [];
+  data: any = [];
 
   interestInfo: any = {};
   basicInfo: any = {};
@@ -26,18 +27,27 @@ export class ProfessionalAboutComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private createProfileSrv: CreateProfileService
-  ) { }
+  ) {
+    this.data = this.router.getCurrentNavigation().extras.state.data;
+   }
 
   ngOnInit(): void {
     this.formInit();
 
     this.interestInfo = this.createProfileSrv.getInfo('interest');
     this.basicInfo = this.createProfileSrv.getInfo('basic');
+
+    
+    this.aboutProgramForm.patchValue(this.data);
+    this.educations = this.data.educations;
+    this.experiences = this.data.experiences;
+    this.certifications = this.data.certifications;
+    this.skills = this.data.skills;
   }
 
   formInit() {
     this.aboutProgramForm = this.fb.group({
-      professionalTitle: ['', Validators.required],
+      title: ['', Validators.required],
       aboutUs: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
@@ -78,11 +88,7 @@ export class ProfessionalAboutComponent implements OnInit {
     // http api call - POST
     if (this.aboutProgramForm.valid) {
       this.http.post(environment.API_BASE_URL + '/professional-about', data).subscribe(res => {
-        alert('Profile Successfully Created.')
-        this.router.navigateByUrl('/homepage');
-      },
-      (error) => {
-        alert(error);
+        this.router.navigateByUrl('/auth/login');
       })
     } else {
       alert('Form is empty!');

@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class CreateProfileService {
 
-  interestInfo: any = {};
+  interestInfo: any = [];
   basicInfo: any = {};
   allInfo: any = {};
 
