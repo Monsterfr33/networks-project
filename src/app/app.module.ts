@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 
 import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
+import { TokenInterceptorService } from './core/interceptors/token-interceptor/token-interceptor.service';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -26,7 +27,11 @@ import { FooterComponent } from './layout/footer/footer.component';
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    Location, 
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

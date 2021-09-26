@@ -115,7 +115,7 @@ export class ProfessionalAboutComponent implements OnInit {
 
     // http api call - POST
     if (this.aboutProgramForm.valid) {
-      this.http.put(environment.API_BASE_URL + '/professional-about', this.data._id, data).subscribe(res => {
+      this.http.put(environment.API_BASE_URL + '/professional-about/' + this.data._id, data).subscribe(res => {
         this.router.navigate(['/profile/view-profile'], {state: {email: this.data.email}});
       })
     } else {

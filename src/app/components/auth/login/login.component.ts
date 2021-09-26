@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
 
       alert('Login Successfully.')
       this.router.navigate(['/profile/view-profile'], {state: { email: this.loginProgramForm.value.email } });
+      
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     },
     (error) => {
       alert(error);

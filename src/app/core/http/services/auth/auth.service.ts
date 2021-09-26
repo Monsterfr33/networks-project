@@ -10,13 +10,6 @@ export class AuthService {
     private location: Location
   ) { }
 
-  isUserLoggedIn(): boolean {
-    let user = this.getUser();
-
-    if(user?._id) return true;
-    else return false;
-  }
-
   setUser(user: any) {
     let data = JSON.stringify(user);
     localStorage.setItem('user', data);
@@ -25,6 +18,13 @@ export class AuthService {
   getUser() {
     let user = localStorage.getItem('user');
     return JSON.parse(user);
+  }
+
+  isUserLoggedIn(): boolean {
+    let user = this.getUser();
+
+    if(user?._id) return true;
+    else return false;
   }
 
   setToken(token: string) {
