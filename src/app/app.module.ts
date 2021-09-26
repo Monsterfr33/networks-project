@@ -5,6 +5,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { TokenInterceptorService } from './core/interceptors/token-interceptor/token-interceptor.service';
+import { LoaderInterceptorService } from './core/interceptors/loader-interceptor/loader-interceptor.service';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -30,6 +31,7 @@ import { FooterComponent } from './layout/footer/footer.component';
   providers: [
     Location, 
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
