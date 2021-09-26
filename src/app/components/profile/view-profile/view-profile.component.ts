@@ -39,7 +39,9 @@ export class ViewProfileComponent implements OnInit {
       this.email = this.user.email;
 
       this.getProfile();
-    } else {
+    }
+
+    if (!this.email && !this.data?._id) {
       this.router.navigateByUrl('/auth/login');
     }
   }

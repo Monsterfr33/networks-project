@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12">
         <div class="heading">
-          <a class="float-right" (click)="edit(data)">Edit</a>
+          <a class="float-right" (click)="edit(data)" *ngIf="user?.email">Edit</a>
           <h1>{{data.name}}</h1>
           <h2 class="pt-5">Professional Title,</h2>
           <p>{{data.title}}</p>
