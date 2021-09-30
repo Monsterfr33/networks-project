@@ -1,19 +1,30 @@
 <div class="homepage-screen">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-4 mt-3" *ngFor="let item of fields" routerLink="/interest-hobbies">
-        <div class="field-btns">
-          <a class="rounded-btn">{{item.field}}</a>
+      <div class="d-block mt-3">
+        <div class="field-btns" *ngFor="let item of fields">
+          <div class="showhim">
+            <a class="rounded-btn">{{item.field}}</a>
+
+            <div class="popup">
+              <div class="tie-popup">
+                {{item.popupTypo}}
+
+                <div class="mt-3">
+                  <a routerLink="/interest-hobbies" class="text-white border p-2">Signup as <strong>{{item.field}}</strong></a>
+                </div>
+              </div>
+              <div class="triangle-down"></div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="col-12 col-lg-4 mt-5">
-        <div class="new-account text-center">
-          <span>Don't have an Account?</span>
-          <a class="text-pinkgradient" routerLink="/auth/login">
-            Sign In
-          </a>
-        </div>
+      <div class="new-account w-100 text-center">
+        <span>Already have an Account?</span>
+        <a class="text-pinkgradient" routerLink="/auth/login">
+          Sign In
+        </a>
       </div>
     </div>
   </div>
