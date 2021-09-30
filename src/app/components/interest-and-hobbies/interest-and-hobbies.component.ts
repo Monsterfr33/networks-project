@@ -13,12 +13,15 @@ export class InterestAndHobbiesComponent implements OnInit {
 
   data: any = [];
   selected: any = [];
+  type: any = "Student";
 
   constructor(
     private router: Router,
     private http: HttpClient,
     private createProfileSrv: CreateProfileService
-  ) { }
+  ) {
+    this.type = this.router.getCurrentNavigation().extras?.state?.type;
+  }
 
   ngOnInit(): void {
     this.getData();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +10,9 @@ export class HomepageComponent implements OnInit {
 
   fields: any = [];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.fields =[
@@ -29,6 +32,10 @@ export class HomepageComponent implements OnInit {
         popupTypo: "Connect to the world of professional interest as creation of a company networks circle in landing dream career."
       }
     ]
+  }
+
+  onNavigate(type: any) {
+    this.router.navigate(['/interest-hobbies'], {state: {type: type}})
   }
 
 }
