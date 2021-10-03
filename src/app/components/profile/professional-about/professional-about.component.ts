@@ -25,7 +25,7 @@ export class ProfessionalAboutComponent implements OnInit {
 
   profileType: string = "Student";
 
-  isExpandBioTrack: boolean = true;
+  isExpandBioTrack: boolean = false;
 
   constructor(
     private router: Router,
