@@ -33,7 +33,7 @@ export class CertificationComponent implements OnInit {
     this.certificationsProgramForm = this.fb.group({
       image: [''],
       certification: ['', Validators.required],
-      companyName: ['', Validators.required],
+      // companyName: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
     });
@@ -43,6 +43,7 @@ export class CertificationComponent implements OnInit {
     if (this.certificationsProgramForm.valid) {
       this.certifications.push(this.certificationsProgramForm.value);
       this.certificationsProgramForm.reset();
+      this.isCertificationReset = !this.isCertificationReset;
 
       // send data to parent
       this.getCertifications.emit(this.certifications);

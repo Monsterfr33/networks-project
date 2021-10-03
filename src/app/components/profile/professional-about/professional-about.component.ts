@@ -23,6 +23,10 @@ export class ProfessionalAboutComponent implements OnInit {
   interestInfo: any = {};
   basicInfo: any = {};
 
+  profileType: string = "Student";
+
+  isExpandBioTrack: boolean = true;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -39,7 +43,6 @@ export class ProfessionalAboutComponent implements OnInit {
     this.interestInfo = this.createProfileSrv.getInfo('interest');
     this.basicInfo = this.createProfileSrv.getInfo('basic');
 
-    
     this.aboutProgramForm.patchValue(this.data);
     this.educations = this.data.educations;
     this.experiences = this.data.experiences;
@@ -50,27 +53,35 @@ export class ProfessionalAboutComponent implements OnInit {
   formInit() {
     this.aboutProgramForm = this.fb.group({
       title: ['', Validators.required],
+      position: ['', Validators.required],
       aboutUs: ['', Validators.required],
+      email: ['', Validators.required],
       phone: ['', Validators.required],
-      address: ['', Validators.required],
+      country: ['', Validators.required],
+      postal: ['', Validators.required],
+      city: ['', Validators.required],
       website: ['', Validators.required],
     });
   }
 
   onGetEducations(event) {
     this.educations = event;
+    console.log(this.educations);
   }
 
   onGetExperiences(event) {
     this.experiences = event;
+    console.log(this.experiences);
   }
 
   onGetCertifications(event) {
     this.certifications = event;
+    console.log(this.certifications);
   }
 
   onGetSkills(event) {
     this.skills = event;
+    console.log(this.skills);
   }
 
   createProfile() {
@@ -123,6 +134,10 @@ export class ProfessionalAboutComponent implements OnInit {
     }
 
     console.log(data);
+  }
+
+  onExpand() {
+    this.isExpandBioTrack = !this.isExpandBioTrack;
   }
 
 }

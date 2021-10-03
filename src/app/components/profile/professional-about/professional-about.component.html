@@ -16,20 +16,36 @@
           <div class="about-form">
             <form [formGroup]="aboutProgramForm">
               <div class="form-group">
-                <label>Professional Title</label>
-                <input type="text" class="form-control" placeholder="Professional Title" formControlName="title">
+                <label><span class="text-danger">*</span> Headline</label>
+                <input type="text" class="form-control" placeholder="Professional or identity as {{profileType}} Major" formControlName="title">
               </div>
               <div class="form-group">
-                <label>About Us</label>
-                <textarea class="form-control" rows="6" placeholder="About Us ..." formControlName="aboutUs"></textarea>
+                <label>Current Position</label>
+                <input type="text" class="form-control" placeholder="A form of Contact" formControlName="position">
+              </div>
+              <div class="form-group">
+                <label>Autobiography</label>
+                <textarea class="form-control" rows="6" placeholder="About 300 charachters max" formControlName="aboutUs"></textarea>
+              </div>
+              <div class="form-group">
+                <label><span class="text-danger">*</span> Email</label>
+                <input type="number" class="form-control" placeholder="account@example.com" formControlName="email">
               </div>
               <div class="form-group">
                 <label>Contact/Phone</label>
-                <input type="number" class="form-control" placeholder="Phone" formControlName="phone">
+                <input type="number" class="form-control" placeholder="A form of Contact" formControlName="phone">
               </div>
               <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" placeholder="Address" formControlName="address">
+                <label><span class="text-danger">*</span> Country/Region</label>
+                <input type="text" class="form-control" placeholder="Country/Region" formControlName="country">
+              </div>
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" placeholder="Postal Code" formControlName="postal">
+              </div>
+              <div class="form-group">
+                <label>City, State</label>
+                <input type="text" class="form-control" placeholder="City, State" formControlName="city">
               </div>
               <div class="form-group">
                 <label>Website</label>
@@ -38,24 +54,35 @@
             </form>
           </div>
 
-          <!-- education form -->
-          <div class="border-bottom pb-2">
-            <app-education (getEducations)="onGetEducations($event)" [data]="educations"></app-education>
-          </div>
+          <div class="bio-track">
+            <div class="clickable-area">
+              <h5>Bio Track</h5>
+              <a (click)="onExpand()" class="text-primary">
+                <i class="fas fa-arrow-alt-circle-down"></i>
+              </a>
+            </div>
 
-          <!-- experience form -->
-          <div class="border-bottom pb-2">
-            <app-experience (getExperiences)="onGetExperiences($event)" [data]="experiences"></app-experience>
-          </div>
+            <div class="expanded-area" [ngClass]="{'active': isExpandBioTrack}">
+              <!-- education form -->
+              <div class="pb-2">
+                <app-education (getEducations)="onGetEducations($event)" [data]="educations"></app-education>
+              </div>
 
-          <!-- certifications form -->
-          <div class="border-bottom pb-2">
-            <app-certification (getCertifications)="onGetCertifications($event)" [data]="certifications"></app-certification>
-          </div>
+              <!-- experience form -->
+              <div class="pb-2">
+                <app-experience (getExperiences)="onGetExperiences($event)" [data]="experiences"></app-experience>
+              </div>
 
-          <!-- Skills form -->
-          <div class="border-bottom pb-2">
-            <app-skills (getSkills)="onGetSkills($event)" [data]="skills"></app-skills>
+              <!-- certifications form -->
+              <div class="pb-2">
+                <app-certification (getCertifications)="onGetCertifications($event)" [data]="certifications"></app-certification>
+              </div>
+
+              <!-- Skills form -->
+              <div class="border-bottom pb-2">
+                <app-skills (getSkills)="onGetSkills($event)" [data]="skills"></app-skills>
+              </div>
+            </div>
           </div>
 
           <div class="done-btn pt-4">

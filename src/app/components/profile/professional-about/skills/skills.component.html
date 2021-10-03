@@ -1,4 +1,4 @@
-<div class="skill-form pt-3">
+<!-- <div class="skill-form pt-3">
   <h4>Skills</h4>
 
   <form [formGroup]="skillsProgramForm">
@@ -15,5 +15,27 @@
 <div class="card mt-3" *ngFor="let item of skills">
   <div class="card-body p-3">
     <h5>{{item.name}}</h5>
+  </div>
+</div> -->
+
+<div class="skills pt-3">
+  <div class="bio-track-section">
+    <div class="avatar w-25">
+      <app-image-uploader [isReset]="isSkillReset" (previewImage)="onImageSkillPreview($event)"></app-image-uploader>
+    </div>
+    <div class="right-area w-75">
+      <form [formGroup]="skillsProgramForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Skill & Talent" formControlName="name">
+        </div>
+        <div class="date-area">
+          <input type="date" formControlName="startDate">
+          <input type="date" formControlName="endDate">
+        </div>
+        <a class="add-more" (click)="onChangeSkill()">
+          <i class="fas fa-plus-circle"></i>
+        </a>
+      </form>
+    </div>
   </div>
 </div>

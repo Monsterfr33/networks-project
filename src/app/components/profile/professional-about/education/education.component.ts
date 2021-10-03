@@ -32,7 +32,7 @@ export class EducationComponent implements OnInit {
   formInit(): void {
     this.educationProgramForm = this.fb.group({
       image: [''],
-      universityName: ['', Validators.required],
+      // universityName: ['', Validators.required],
       degree: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -43,6 +43,7 @@ export class EducationComponent implements OnInit {
     if (this.educationProgramForm.valid) {
       this.educations.push(this.educationProgramForm.value);
       this.educationProgramForm.reset();
+      this.isEducationReset = !this.isEducationReset;
 
       // send data to parent
       this.getEducations.emit(this.educations);

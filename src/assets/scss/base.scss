@@ -194,3 +194,44 @@ button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.bio-track-section {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  .right-area {
+    background: #f5f5f5;
+    position: relative;
+    height: 65px;
+    margin-left: 10px;
+    border-radius: 6px;
+    .form-group {
+      input {
+        background-color: transparent;
+        border: 0 !important;
+      }
+    }
+    .date-area {
+      display: flex;
+      position: absolute;
+      bottom: -10px;
+      left: 15px;
+      input {
+        width: 100px;
+        margin-right: 10px;
+        font-size: 10px;
+        padding: 2px;
+        border-radius: 15px;
+        border: 1px solid #ececec;
+      }
+    }
+    .add-more {
+      position: absolute;
+      right: 10px;
+      bottom: -15px;
+      font-size: 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

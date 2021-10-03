@@ -33,7 +33,7 @@ export class ExperienceComponent implements OnInit {
     this.experienceProgramForm = this.fb.group({
       image: [''],
       designation: ['', Validators.required],
-      companyName: ['', Validators.required],
+      // companyName: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
     });
@@ -43,6 +43,7 @@ export class ExperienceComponent implements OnInit {
     if (this.experienceProgramForm.valid) {
       this.experiences.push(this.experienceProgramForm.value);
       this.experienceProgramForm.reset();
+      this.isExperienceReset = !this.isExperienceReset;
 
       // send data to parent
       this.getExperiences.emit(this.experiences);
