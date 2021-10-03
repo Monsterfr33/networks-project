@@ -60,6 +60,9 @@ export class ViewProfileComponent implements OnInit {
     ).subscribe(res => {
       this.data = res[0];
       this.authService.setUser(this.data);
+
+      console.log(this.data);
+      
     })
   }
 

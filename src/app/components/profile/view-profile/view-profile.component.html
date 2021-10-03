@@ -6,7 +6,8 @@
           <a class="float-right" (click)="edit(data)" *ngIf="user?.email">Edit</a>
           <h1>{{data.name}}</h1>
           <h2 class="pt-5">Professional Title,</h2>
-          <p>{{data.title}}</p>
+          <p class="mb-2">{{data.title}}</p>
+          <p>{{data.aboutUs}}</p>
         </div>
       </div>
     </div>
@@ -16,12 +17,18 @@
         <div class="col-12">
           <h2>Education</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.educations">
-          <div class="card">
-            <img src={{item.image}}>
-            <p>{{item.universityName}}</p>
-            <h6>{{item.degree}}</h6>
-            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="bio-track-view" *ngFor="let item of data.educations">
+            <div class="avatar">
+              <img src={{item.image}}>
+            </div>
+            <div class="content">
+              <h6>{{item.degree}}</h6>
+              <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+              <a (click)="edit(data)" *ngIf="user?.email">
+                <i class="fas fa-plus-circle"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -30,12 +37,18 @@
         <div class="col-12">
           <h2>Experience</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.experiences">
-          <div class="card">
-            <img src={{item.image}}>
-            <p>{{item.designation}}</p>
-            <h6>{{item.companyName}}</h6>
-            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="bio-track-view" *ngFor="let item of data.experiences">
+            <div class="avatar">
+              <img src={{item.image}}>
+            </div>
+            <div class="content">
+              <h6>{{item.designation}}</h6>
+              <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+              <a (click)="edit(data)" *ngIf="user?.email">
+                <i class="fas fa-plus-circle"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -44,12 +57,18 @@
         <div class="col-12">
           <h2>Licenses & Certifications</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.certifications">
-          <div class="card">
-            <img src={{item.image}}>
-            <p>{{item.certification}}</p>
-            <h6>{{item.companyName}}</h6>
-            <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="bio-track-view" *ngFor="let item of data.certifications">
+            <div class="avatar">
+              <img src={{item.image}}>
+            </div>
+            <div class="content">
+              <h6>{{item.certification}}</h6>
+              <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+              <a (click)="edit(data)" *ngIf="user?.email">
+                <i class="fas fa-plus-circle"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -58,12 +77,18 @@
         <div class="col-12">
           <h2>Volunteering & Skills</h2>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of data.skills">
-          <div class="card">
-            <!-- <img src={{item.image}}> -->
-            <!-- <p>{{item.name}}</p> -->
-            <h6>{{item.name}}</h6>
-            <!-- <p>{{item.startDate}} - {{item.endDate}}</p> -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="bio-track-view" *ngFor="let item of data.skills">
+            <div class="avatar">
+              <img src={{item.image}}>
+            </div>
+            <div class="content">
+              <h6>{{item.name}}</h6>
+              <p>{{item.startDate | date: 'longDate'}} - {{item.endDate | date: 'longDate'}}</p>
+              <a (click)="edit(data)" *ngIf="user?.email">
+                <i class="fas fa-plus-circle"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -75,7 +100,7 @@
             <p class="pt-3"><i class="fas fa-globe"></i> {{data.website}}</p>
             <p><i class="fas fa-envelope"></i> {{data.email}}</p>
             <p><i class="fas fa-phone-alt"></i> {{data.phone}}</p>
-            <p><i class="fas fa-map-marker-alt"></i> {{data.address}}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{data.city}}, {{data.country}}, {{data.postal}}</p>
           </div>
         </div>
       </div>
