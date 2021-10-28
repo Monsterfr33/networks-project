@@ -1,4 +1,4 @@
-# networks-project
+# networks-project (Frontend App)
 networks pwa app
 
 # Serve ng App on port
